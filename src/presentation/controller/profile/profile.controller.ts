@@ -88,12 +88,10 @@ export class ProfileController {
 
   @Get('/:profileId/experience/:experienceId')
   async getOneProfileExperienceByExperienceId(
-    @Headers('authorization') token: string,
+    @AuthUser() userId: number,
     @Param('profileId') profileId: number,
     @Param('experienceId') experienceId: number,
   ): Promise<ProfileExperienceVo | null> {
-    const decodedToken = this.verifyToken(token);
-    const userId = decodedToken.aud;
     return await this.profileService.getOneProfileExperienceByExperienceId(
       Number(userId),
       Number(profileId),
@@ -110,12 +108,10 @@ export class ProfileController {
 
   @Get('/:profileId/education/:educationId')
   async getOneProfileEducationByEducationId(
-    @Headers('authorization') token: string,
+    @AuthUser() userId: number,
     @Param('profileId') profileId: number,
     @Param('educationId') educationId: number,
   ): Promise<ProfileEducationVo | null> {
-    const decodedToken = this.verifyToken(token);
-    const userId = decodedToken.aud;
     return await this.profileService.getOneProfileEducationByEducationId(
       Number(userId),
       Number(profileId),
@@ -341,7 +337,6 @@ export class ProfileController {
     @Param('profileId') profileId: number,
     @Param('projectId') projectId: number,
   ): Promise<void> {
-
     const profileProjectDeleteDto: ProfileProjectDeleteDto = {
       userId: userId,
       profileId: Number(profileId),
@@ -359,7 +354,6 @@ export class ProfileController {
     @Param('profileId') profileId: number,
     @Param('experienceId') experienceId: number,
   ): Promise<void> {
-
     const profileExperienceDeleteDto: ProfileExperienceDeleteDto = {
       userId: userId,
       profileId: Number(profileId),
