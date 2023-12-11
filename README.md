@@ -10,7 +10,8 @@
 
 ## Functionalities
 - Sign-in, Sign-up
-- Feed with comments, likes, search and sort
+- Feed with comments and likes 
+- Feeds list with search and sort, including 'trending feeds'
 - Profile
 - Networking
 
